@@ -3,223 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lamsal Graphics - Professional Graphic Design Services in Tilottama. Specializing in logo design, flex banners, cup designs, and more.">
-    <meta name="keywords" content="graphic design, logo design, flex banner, cup design, Tilottama, Nepal">
-    
-    <title>Lamsal Graphics - Professional Design Services</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="author" content="Lamsal Graphics">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Lamsal Graphics - Professional Design Services">
-    <meta property="og:description" content="Professional graphic design services in Tilottama, Nepal. Specializing in logo design, flex banners, cup designs and more.">
-    <meta property="og:image" content="assets/og-image.jpg">
-    <meta property="og:url" content="https://lamsalgraphics.com">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Lamsal Graphics - Professional Design Services">
-    <meta name="twitter:description" content="Professional graphic design services in Tilottama, Nepal. Specializing in logo design, flex banners, cup designs and more.">
-    <meta name="twitter:image" content="assets/twitter-card.jpg">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </head>
+    <title>Website Under Maintenance</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling for the moving text box */
+        .text-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px;
+            animation: moveText 5s infinite alternate;
+        }
+
+        /* Keyframe animation for moving text */
+        @keyframes moveText {
+            0% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -60%);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Balloon styles */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            background-color: rgb(255, 0, 0);
+            border-radius: 50%;
+            width: 60px;
+            height: 80px;
+            animation: fall 10s infinite;
+        }
+
+        /* Balloon falling animation */
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(calc(-50% + 50vw)) translateY(100vh);
+            }
+        }
+
+        /* Create different colors for balloons */
+        .balloon:nth-child(odd) {
+            background-color: rgb(0, 255, 0);
+        }
+
+        .balloon:nth-child(3n) {
+            background-color: rgb(0, 0, 255);
+        }
+
+        .balloon:nth-child(4n) {
+            background-color: rgb(255, 255, 0);
+        }
+    </style>
+</head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="/">
-                    <img src="logo lamsal graphics .jpg" alt="Lamsal Graphics Logo">
-                </a>
-            </div>
-            
-            <div class="nav-links">
-                <ul>
-                    <li><a href="home.html" class="active">Home</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact form.html">Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="nav-buttons">
-                <a href="quote.html" class="btn btn-primary">Get Quote</a>
-                <button class="mobile-menu-btn" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <div class="text-box">
+        Website is under maintenance
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Where Creativity Meets Excellence</h1>
-            <p>Professional graphic design solutions for your business needs</p>
-            <div class="hero-buttons">
-                <a href="explore service.html" class="btn btn-primary">Explore Services</a>
-                <a href="contact form.html" class="btn btn-secondary">Contact Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Preview Section -->
-    <section class="services-preview">
-        <h2>Our Comprehensive Services</h2>
-        <div class="services-grid">
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Logo Design</h3>
-                <p>Create a unique and memorable brand identity</p>
-                <a href="logo learn more .html" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-image"></i>
-                <h3>Flex Banner Design</h3>
-                <p>Eye-catching banners for impactful promotions</p>
-                <a href="flex banner.html" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-certificate"></i>
-                <h3>Certificate Design</h3>
-                <p>Professional certificates with custom layouts</p>
-                <a href="service.html#certificate" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-utensils"></i>
-                <h3>Menu Design</h3>
-                <p>Appetizing menu layouts for restaurants</p>
-                <a href="service.html#menu" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-dove"></i>
-                <h3>Memorial Designs</h3>
-                <p>Respectful and dignified memorial designs</p>
-                <a href="service.html#memorial" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-heart"></i>
-                <h3>Special Occasions</h3>
-                <p>Designs for life's precious moments</p>
-                <a href="service.html#occasions" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-coffee"></i>
-                <h3>Product Design</h3>
-                <p>Custom designs for merchandise and packaging</p>
-                <a href="service.html#product" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-file-alt"></i>
-                <h3>Business Stationery</h3>
-                <p>Complete corporate identity packages</p>
-                <a href="service.html#stationery" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-share-alt"></i>
-                <h3>Social Media Design</h3>
-                <p>Engaging content for digital platforms</p>
-                <a href="service.html#social" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-birthday-cake"></i>
-                <h3>Event Design</h3>
-                <p>Creative designs for special events</p>
-                <a href="service.html#event" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-id-card"></i>
-                <h3>Business Cards</h3>
-                <p>Professional networking essentials</p>
-                <a href="service.html#cards" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-edit"></i>
-                <h3>Photo Editing</h3>
-                <p>Professional image enhancement</p>
-                <a href="service.html#editing" class="service-link">Learn More</a>
-            </div>
-            <!-- Additional service cards for different paper types and sizes -->
-            <div class="service-card" data-aos="fade-up">
-                <i class="fas fa-file-image"></i>
-                <h3>Korean Paper Designs</h3>
-                <p>Unique designs on traditional Korean paper</p>
-                <a href="korean-paper-designs.html" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-file-image"></i>
-                <h3>Photo Paper Designs</h3>
-                <p>High-quality designs on photo paper</p>
-                <a href="photo-paper-designs.html" class="service-link">Learn More</a>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-file-image"></i>
-                <h3>Custom Size Designs</h3>
-                <p>Designs tailored to your specific size needs</p>
-                <a href="custom-size-designs.html" class="service-link">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Tilottama, Nepal</p>
-                <p><i class="fas fa-phone"></i> +977 9867584455</p>
-                <p><i class="fas fa-envelope"></i> info@lamsalgraphics.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact form.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Lamsal Graphics. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Balloons will be generated here by JavaScript -->
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+        // Function to create balloons
+        function createBalloons() {
+            for (let i = 0; i < 10; i++) {
+                let balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = `${Math.random() * 100}vw`; // Random position horizontally
+                balloon.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random falling speed
+                document.body.appendChild(balloon);
+            }
+        }
+
+        // Call the function to create balloons when the page loads
+        window.onload = createBalloons;
     </script>
 </body>
 </html>
