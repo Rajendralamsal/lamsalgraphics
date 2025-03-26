@@ -5,66 +5,284 @@
     <link rel="canonical" href="http://example.com/news">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lamsal Graphics - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
-            color: white;
-            text-align: center;
-            padding: 50px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
         }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
         .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
         h1 {
-            font-size: 2.5em;
-            animation: glow 1.5s infinite alternate;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
+            background: linear-gradient(45deg, #00aeff, #a0ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
         }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #fff; }
-            to { text-shadow: 0 0 20px #ffcc00; }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            opacity: 0.9;
         }
+
         .countdown {
-            font-size: 1.8em;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .countdown-label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: #aaa;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #00ff88;
+        }
+
+        .newsletter {
+            margin-top: 2rem;
+        }
+
+        .newsletter input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            margin-right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .newsletter button {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #00aeff, #00ff88);
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .countdown {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="particles-js" class="particles"></div>
     <div class="container">
-        <h1>Lamsal Graphics</h1>
-        <p>UNDER CONSTRUCTION</p>
-        <p>WE ARE COMING SOON...</p>
-        <div class="countdown" id="countdown"></div>
+        <h1>LAMSAL GRAPHICS</h1>
+        <p style="animation: slideUp 1s 0.2s forwards; opacity: 0;">Crafting Visual Excellence</p>
+        <p style="animation: slideUp 1s 0.4s forwards; opacity: 0;">Launching In...</p>
+        
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="newsletter">
+            <input type="email" placeholder="Enter email for updates">
+            <button>Notify Me</button>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Particles.js config
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Enhanced Countdown Timer
         function countdownTimer() {
-            const launchDate = new Date("April 30, 2025 00:00:00").getTime();
-            const timer = setInterval(function() {
-                let now = new Date().getTime();
-                let timeLeft = launchDate - now;
-                
-                let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-                
+            const launchDate = new Date('April 30, 2025 00:00:00').getTime();
+            
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeLeft = launchDate - now;
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = Math.floor(minutes).toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
                 if (timeLeft < 0) {
                     clearInterval(timer);
-                    document.getElementById("countdown").innerHTML = "We Are Live!";
+                    document.getElementById('countdown').innerHTML = `
+                        <div class="launch-message">
+                            <h2>We're Live!</h2>
+                            <a href="#" class="visit-button">Visit Site</a>
+                        </div>
+                    `;
                 }
-            }, 1000);
+            }
+
+            updateTimer();
+            const timer = setInterval(updateTimer, 1000);
         }
-        countdownTimer();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            countdownTimer();
+            
+            // Add animation to elements
+            const elements = document.querySelectorAll('.countdown-item, .newsletter, .social-links');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 600 + (index * 100));
+            });
+        });
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4745015261046559" crossorigin="anonymous"></script>
+</body>
+</html>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4745015261046559"
      crossorigin="anonymous"></script>
 </body>
