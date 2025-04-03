@@ -1,290 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="amphtml" href="http://example.com/amp/news">
-    <link rel="canonical" href="http://example.com/news">
-    <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-4745015261046559">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lamsal Graphics - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 4rem 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
-            background: linear-gradient(45deg, #00aeff, #a0ff00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulse 2s infinite;
-        }
-
-        p {
-            font-family: 'Roboto', sans-serif;
-            margin: 1rem 0;
-            font-size: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .countdown-number {
-            font-size: 3rem;
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-
-        .countdown-label {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-            color: #aaa;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: #00ff88;
-        }
-
-        .newsletter {
-            margin-top: 2rem;
-        }
-
-        .newsletter input {
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            margin-right: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        .newsletter button {
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(45deg, #00aeff, #00ff88);
-            border: none;
-            border-radius: 5px;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .newsletter button:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .countdown {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-            
-            .countdown-number {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Lamsal Graphics | Creative Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="particles-js" class="particles"></div>
-    <div class="container">
-        <h1>LAMSAL GRAPHICS</h1>
-        <p style="animation: slideUp 1s 0.2s forwards; opacity: 0;">Crafting Visual Excellence</p>
-        <p style="animation: slideUp 1s 0.4s forwards; opacity: 0;">Launching In...</p>
-        
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
-
-        <div class="newsletter">
-            <input type="email" placeholder="Enter email for updates">
-            <button>Notify Me</button>
-        </div>
-
-        <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
-            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="logo-container">
+            <svg class="logo" width="100" height="100" viewBox="0 0 100 100">
+                <polygon class="logo-shape" points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="#ff3366" stroke-width="2"></polygon>
+                <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
+            </svg>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Particles.js config
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#ffffff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'repulse' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
-        // Enhanced Countdown Timer
-        function countdownTimer() {
-            const launchDate = new Date('April 30, 2025 00:00:00').getTime();
-            
-            function updateTimer() {
-                const now = new Date().getTime();
-                const timeLeft = launchDate - now;
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="#ff3366" stroke-width="2"></polygon>
+                <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
+            </svg>
+            <span>Lamsal Graphics</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
 
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#work" class="mobile-link">Work</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
 
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = Math.floor(minutes).toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="reveal-text">Creative Design <span>Solutions</span></h1>
+            <p class="reveal-text delay-1">We transform ideas into visual masterpieces</p>
+            <div class="cta-container reveal-text delay-2">
+                <a href="#work" class="cta-button">View Our Work</a>
+                <a href="#contact" class="cta-button outline">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-graphics">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </section>
 
-                if (timeLeft < 0) {
-                    clearInterval(timer);
-                    document.getElementById('countdown').innerHTML = `
-                        <div class="launch-message">
-                            <h2>We're Live!</h2>
-                            <a href="#" class="visit-button">Visit Site</a>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive design solutions for your brand</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Flex banner Design & Print </h3>
+                <p>Custom-sized flex banner designs tailored to your needs, ensuring your message stands out and captivates your audience.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Social Media Post Design</h3>
+                <p>Eye-catching social media posts designed to boost engagement and promote your brand effectively.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Visiting Card Design</h3>
+                <p>Custom visiting cards that reflect your brand identity and leave a lasting impression on your clients.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Photography, Photo Editing & Framing</h3>
+                <p>Professional photography that captures the essence of your products and services, along with expert photo editing to enhance visual appeal. We also offer photo framing and photo lamination services to preserve and showcase your memories beautifully.</p>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Hotel Menu Design</h3>
+                <p>Elegant and visually appealing hotel menus that showcase your culinary offerings and enhance the dining experience.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Certificate Design & Print</h3>
+                <p>Custom designs for any type of certificate, including Praman Patra, Samman Patra, and Prasamsmsha Patra, ensuring a professional and elegant presentation.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Letterhead Design & Print</h3>
+                <p>Custom letterhead designs that reflect your brand's identity, ensuring a professional and polished look for all your correspondence.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <i class="fas fa-image"></i>
+                </div>
+                <h3>Condolence Photo Design & Print</h3>
+                <p>Custom designs for condolence photos, providing a respectful and heartfelt tribute to your loved ones, ensuring a dignified presentation.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Birthday Photo Design & Print</h3>
+                <p>Custom birthday photo designs that capture the joy of your special day, providing beautiful prints to cherish your memories forever.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="service-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <h3>Logo Design</h3>
+                <p>Creative and unique logo designs that encapsulate your brand's essence, ensuring a memorable identity.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="service-icon">
+                    <i class="fas fa-stamp"></i>
+                </div>
+                <h3>Stamp Design & Print</h3>
+                <p>Custom stamp designs and prints that add a professional touch to your documents and branding materials.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="service-icon">
+                    <i class="fas fa-print"></i>
+                </div>
+                <h3>Program Batch Design & Print</h3>
+                <p>Custom designs for program batches that ensure a professional presentation, perfect for events and ceremonies.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="service-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h3>Cup Design & Print</h3>
+                <p>Custom designs for cups, allowing you to add your own photos and create a unique and personalized gift or promotional item.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="service-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Token of Love Design</h3>
+                <p>Custom designs for tokens of love, perfect for expressing your feelings and creating lasting memories with personalized gifts.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Cushion Print Design</h3>
+                <p>Custom cushion prints that allow you to showcase your favorite photos and designs, adding a personal touch to your home decor.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1100">
+                <div class="service-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>T-Shirt Print Design</h3>
+                <p>Custom designs for t-shirt prints, allowing you to showcase your unique style and personality through personalized graphics and photos.</p>
+            </div>
+        </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Cushion Print Design</h3>
+                <p>Custom cushion prints that allow you to showcase your favorite photos and designs, adding a personal touch to your home decor.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="service-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>T-Shirt Print Design</h3>
+                <p>Custom designs for t-shirt prints, allowing you to showcase your unique style and personality through personalized graphics and photos.</p>
+            </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="section-header">
+            <h2>Our Work</h2>
+            <p>A showcase of our creative projects</p>
+        </div>
+        <div class="work-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="web">Web Design</button>
+            <button class="filter-btn" data-filter="print">Print</button>
+            <button class="filter-btn" data-filter="motion">Motion</button>
+        </div>
+        <div class="work-grid">
+            <div class="work-item branding" data-aos="fade-up">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?branding" alt="Branding Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Elegant Brand Identity</h3>
+                            <p>Branding, Logo Design</p>
+                            <a href="#" class="work-link">View Project</a>
                         </div>
-                    `;
-                }
-            }
+                    </div>
+                </div>
+            </div>
+            <div class="work-item web" data-aos="fade-up" data-aos-delay="100">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?website" alt="Web Design Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Modern E-commerce Site</h3>
+                            <p>Web Design, UI/UX</p>
+                            <a href="#" class="work-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item print" data-aos="fade-up" data-aos-delay="200">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?print" alt="Print Design Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Premium Catalog Design</h3>
+                            <p>Print, Layout</p>
+                            <a href="#" class="work-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item motion" data-aos="fade-up" data-aos-delay="300">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?animation" alt="Motion Graphics Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Dynamic Product Animation</h3>
+                            <p>Motion Graphics, 3D</p>
+                            <a href="#" class="work-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item branding" data-aos="fade-up" data-aos-delay="400">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?logo" alt="Logo Design Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Minimalist Logo Collection</h3>
+                            <p>Branding, Identity</p>
+                            <a href="#" class="work-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item web" data-aos="fade-up" data-aos-delay="500">
+                <div class="work-image">
+                    <img src="https://source.unsplash.com/random/600x400/?app" alt="App Design Project">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Intuitive Mobile App</h3>
+                            <p>UI/UX, Mobile Design</p>
+                            <a href="#" class="work-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-more-container">
+            <a href="#" class="view-more-btn">View More Projects</a>
+        </div>
+    </section>
 
-            updateTimer();
-            const timer = setInterval(updateTimer, 1000);
-        }
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <div class="section-header left-align">
+                    <h2>About Us</h2>
+                    <p>Our story and mission</p>
+                </div>
+                <p class="about-description">Lamsal Graphics is a premier design studio dedicated to creating exceptional visual experiences. Founded in 2015, we've grown from a small team of passionate designers to a full-service creative agency serving clients worldwide.</p>
+                <p class="about-description">Our approach combines artistic vision with strategic thinking to deliver designs that not only look stunning but also achieve your business objectives. We believe in the power of design to transform brands and create meaningful connections with audiences.</p>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="150">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="45">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Design Awards</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <img src="https://source.unsplash.com/random/800x1000/?design-studio" alt="Lamsal Graphics Team">
+                <div class="about-shape"></div>
+            </div>
+        </div>
+    </section>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            countdownTimer();
-            
-            // Add animation to elements
-            const elements = document.querySelectorAll('.countdown-item, .newsletter, .social-links');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, 600 + (index * 100));
-            });
-        });
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4745015261046559" crossorigin="anonymous"></script>
-</body>
-</html>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4745015261046559"
-     crossorigin="anonymous"></script>
+    <!-- Team Section -->
+    <section class="team">
+        <div class="section-header">
+            <h2>Our Team</h2>
+            <p>The creative minds behind Lamsal Graphics</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member" data-aos="fade-up">
+                <div class="member-image">
+                    <img src="me .jpg" alt="Team Member">
+                    <div class="member-social">
+                        <a href="https://wa.me/+977-9867584455"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/Rajendra Lamsal"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:lamsayush1@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <h3>Rajendra Lamsal</h3>
+                <p>Founder & Creative Director</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-image">
+                    <img src="narayan .jpg" alt="Team Member">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <h3>Narayan Bogati</h3>
+                <p>Web Developer</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-image">
+                    <img src="narayan .jpg" alt="Team Member">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <h3>Anil Thapa</h3>
+                <p>Web Developer</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-image">
+                    <img src="https://source.unsplash.com/random/400x400/?portrait,woman,2" alt="Team Member">
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <h3>Maya Gurung</h3>
+                <p>UI/UX Designer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>Client Testimonials</h2>
+            <p>What our clients say about us</p>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Lamsal Graphics transformed our brand identity with their exceptional design work. Their attention to detail and creative approach exceeded our expectations."</p>
+                        <div class="testimonial-author">
+                            <img src="https://source.unsplash.com/random/100x100/?portrait,man,3" alt="Client">
+                            <div class="author-info">
+                                <h4>Sanjay Patel</h4>
+                                <p>CEO, TechNova</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Working with Lamsal Graphics was a game-changer for our company. Their website design not only looks stunning but has significantly improved our conversion rates."</p>
+                        <div class="testimonial-author">
+                            <img src="https://source.unsplash.com/random/100x100/?portrait,woman,3" alt="Client">
+                            <div class="author-info">
+                                <h4>Leela Shrestha</h4>
+                                <p>Marketing Director, EcoStyle</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"The team at Lamsal Graphics is incredibly talented and professional. They took our vague ideas and turned them into a cohesive brand identity that perfectly represents our values."</p>
+                        <div class="testimonial-author">
+                            <img src="https://source.unsplash.com/random/100x100/?portrait,man,4" alt="Client">
+                            <div class="author-info">
+                                <h4>Rohan Karki</h4>
+                                <p>Founder, Himalayan Crafts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="section-header left-align">
+                    <h2>Get In Touch</h2>
+                    <p>Let's discuss your project</p>
+                </div>
+                <p class="contact-description">Ready to bring your vision to life? Contact us today to discuss how Lamsal Graphics can help elevate your brand with exceptional design solutions.</p>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>123 Design Street, Kathmandu, Nepal</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@lamsalgraphics.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+977 1234567890</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="contact-form" data-aos="fade-left">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="#ff3366" stroke-width="2"></polygon>
+                    <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
+                </svg>
+                <h3>Lamsal Graphics</h3>
+                <p>Transforming ideas into visual masterpieces</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Brand Identity</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Motion Graphics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@lamsalgraphics.com">info@lamsalgraphics.com</a></li>
+                        <li><a href="tel:+9771234567890">+977 1234567890</a></li>
+                        <li>123 Design Street, Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Lamsal Graphics. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
