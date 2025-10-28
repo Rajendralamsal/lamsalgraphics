@@ -1,344 +1,223 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-    // Preloader
-    setTimeout(function() {
-        const preloader = document.querySelector('.preloader');
-        preloader.style.opacity = '0';
-        preloader.style.visibility = 'hidden';
-    }, 2500);
+/*==========================================================
+  ADVANCED JAVASCRIPT (script.js)
+==========================================================*/
 
-    // Custom cursor
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize AOS (Animate On Scroll)
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: true, // Only animate once on scroll down
+        mirror: false, // Don't trigger when scrolling up
+    });
+
+    // 2. Preloader Logic
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            // Give a slight delay for assets to load and for the animation to be seen
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 500);
+        });
+    }
+
+    // 3. Custom Cursor Logic (Disabled on touch devices via CSS media query)
     const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-    
-    document.addEventListener('mousemove', function(e) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        setTimeout(function() {
-            cursorFollower.style.left = e.clientX + 'px';
-            cursorFollower.style.top = e.clientY + 'px';
-        }, 100);
-    });
-    
-    document.addEventListener('mousedown', function() {
-        cursor.style.width = '15px';
-        cursor.style.height = '15px';
-        cursorFollower.style.width = '30px';
-        cursorFollower.style.height = '30px';
-    });
-    
-    document.addEventListener('mouseup', function() {
-        cursor.style.width = '10px';
-        cursor.style.height = '10px';
-        cursorFollower.style.width = '40px';
-        cursorFollower.style.height = '40px';
-    });
-    
-    // Add hover effect to links and buttons
-    const links = document.querySelectorAll('a, button, .filter-btn, .service-card');
-    
-    links.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            cursor.style.width = '0';
-            cursor.style.height = '0';
-            cursorFollower.style.width = '60px';
-            cursorFollower.style.height = '60px';
-            cursorFollower.style.borderColor = 'rgba(255, 51, 102, 0.8)';
-            cursorFollower.style.backgroundColor = 'rgba(255, 51, 102, 0.1)';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            cursor.style.width = '10px';
-            cursor.style.height = '10px';
-            cursorFollower.style.width = '40px';
-            cursorFollower.style.height = '40px';
-            cursorFollower.style.borderColor = 'rgba(255, 51, 102, 0.5)';
-            cursorFollower.style.backgroundColor = 'transparent';
-        });
-    });
+    const follower = document.querySelector('.cursor-follower');
+    const links = document.querySelectorAll('a, button, .filter-btn, .work-item, .menu-toggle');
 
-    // Header scroll effect
-    const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (cursor && follower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            follower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+        });
 
-    // Mobile menu toggle
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => follower.classList.add('hovered'));
+            link.addEventListener('mouseleave', () => follower.classList.remove('hovered'));
+        });
+    }
+
+    // 4. Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-    
-    menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
     });
-    
+
     mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
             document.body.classList.remove('no-scroll');
         });
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Active navigation based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-    // Portfolio filter
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    // 5. Portfolio Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const workItems = document.querySelectorAll('.work-item');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Get filter value
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Filter work items
+    const workGrid = document.querySelector('.work-grid');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const filter = e.target.dataset.filter;
+
+            // Update active button state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+
+            // Apply filter
             workItems.forEach(item => {
-                if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 200);
+                const isVisible = filter === 'all' || item.classList.contains(filter);
+                
+                // Use a transition class for a fade effect
+                item.style.opacity = isVisible ? 1 : 0;
+                item.style.display = isVisible ? 'block' : 'none';
+
+                // Re-calculate grid layout after filter
+                if (isVisible) {
+                    item.style.order = 0;
                 } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 500);
+                    item.style.order = 1; // Send hidden items to the end
                 }
             });
         });
     });
 
-    // Testimonial slider
-    const testimonialTrack = document.querySelector('.testimonial-track');
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const prevButton = document.querySelector('.testimonial-prev');
-    const nextButton = document.querySelector('.testimonial-next');
-    const dots = document.querySelectorAll('.dot');
-    
-    let currentSlide = 0;
-    const slideWidth = 100; // 100%
-    
-    // Set initial position
-    testimonialTrack.style.transform = `translateX(0%)`;
-    
-    // Update dots
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
-    
-    // Go to slide
-    function goToSlide(index) {
-        currentSlide = index;
-        testimonialTrack.style.transform = `translateX(-${slideWidth * currentSlide}%)`;
-        updateDots();
-    }
-    
-    // Next slide
-    nextButton.addEventListener('click', function() {
-        if (currentSlide < testimonialSlides.length - 1) {
-            goToSlide(currentSlide + 1);
-        } else {
-            goToSlide(0);
-        }
-    });
-    
-    // Previous slide
-    prevButton.addEventListener('click', function() {
-        if (currentSlide > 0) {
-            goToSlide(currentSlide - 1);
-        } else {
-            goToSlide(testimonialSlides.length - 1);
-        }
-    });
-    
-    // Dot navigation
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            goToSlide(index);
-        });
-    });
-    
-    // Auto slide
-    setInterval(function() {
-        if (currentSlide < testimonialSlides.length - 1) {
-            goToSlide(currentSlide + 1);
-        } else {
-            goToSlide(0);
-        }
-    }, 5000);
+    // 6. Navigation Scroll Active State
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section');
 
-    // Animate stats counter
-    const stats = document.querySelectorAll('.stat-number');
-    
-    function animateStats() {
-        stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds
-            const step = target / (duration / 16); // 16ms per frame (approx 60fps)
-            let current = 0;
-            
-            const counter = setInterval(function() {
-                current += step;
-                if (current >= target) {
-                    stat.textContent = target;
-                    clearInterval(counter);
-                } else {
-                    stat.textContent = Math.floor(current);
+    const updateActiveNav = () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100; // Offset for fixed header
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.href.includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveNav);
+
+    // Set initial active state on page load
+    updateActiveNav();
+
+
+    // 7. Stats Counter Animation
+    const statsContainer = document.querySelector('.stats-container');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let hasAnimated = false;
+
+    const animateCount = (el) => {
+        const target = parseInt(el.dataset.count);
+        let count = 0;
+        const speed = 20; // Lower is faster
+        const increment = target / speed;
+
+        const timer = setInterval(() => {
+            count += increment;
+            if (count > target) {
+                el.innerText = target;
+                clearInterval(timer);
+            } else {
+                el.innerText = Math.ceil(count);
+            }
+        }, 50);
+    };
+
+    const handleScroll = () => {
+        if (statsContainer && !hasAnimated) {
+            const rect = statsContainer.getBoundingClientRect();
+            // Check if the element is in the viewport
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                statNumbers.forEach(animateCount);
+                hasAnimated = true;
+                window.removeEventListener('scroll', handleScroll);
+            }
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run once on load for elements already in view
+
+    // 8. Testimonial Slider
+    const track = document.querySelector('.testimonial-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    const dotsContainer = document.querySelector('.testimonial-dots');
+
+    if (track && slides.length > 0) {
+        let currentIndex = 0;
+        const slideWidth = slides[0].clientWidth;
+
+        const updateSlider = () => {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            updateDots();
+        };
+
+        const updateDots = () => {
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === currentIndex) {
+                    dot.classList.add('active');
                 }
-            }, 16);
-        });
-    }
-    
-    // Trigger stats animation when in viewport
-    const aboutSection = document.querySelector('.about');
-    
-    window.addEventListener('scroll', function() {
-        const aboutPosition = aboutSection.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if (aboutPosition < screenPosition) {
-            animateStats();
-            // Remove event listener after animation is triggered
-            this.removeEventListener('scroll', arguments.callee);
-        }
-    });
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        };
 
-    // Form validation and submission
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        window.addEventListener('resize', updateSlider); // Recalculate on resize
+        updateSlider(); // Initial display
+    }
+
+    // 9. Contact Form Submission (Placeholder)
     const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && subject && message) {
-                // Simulate form submission
-                const submitBtn = document.querySelector('.submit-btn');
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                setTimeout(function() {
-                    contactForm.reset();
-                    submitBtn.textContent = 'Message Sent!';
-                    
-                    setTimeout(function() {
-                        submitBtn.textContent = 'Send Message';
-                        submitBtn.disabled = false;
-                    }, 3000);
-                }, 2000);
-            }
-        });
-    }
+    const formMessage = document.getElementById('form-message');
 
-    // Animate on scroll
-    const animatedElements = document.querySelectorAll('[data-aos]');
-    
-    function checkScroll() {
-        animatedElements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-            
-            if (elementPosition < screenPosition) {
-                element.classList.add('aos-animate');
-            }
-        });
-    }
-    
-    // Initial check
-    checkScroll();
-    
-    // Check on scroll
-    window.addEventListener('scroll', checkScroll);
-});
-
-// Add AOS (Animate On Scroll) classes
-document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('[data-aos]');
-    
-    elements.forEach(element => {
-        element.classList.add('aos-init');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         
-        // Add transition based on delay
-        const delay = element.getAttribute('data-aos-delay') || 0;
-        element.style.transitionDelay = `${delay}ms`;
+        // In a real application, you would send this data to a server here.
+        formMessage.style.color = 'var(--accent-color)';
+        formMessage.innerText = 'Sending message...';
+        
+        setTimeout(() => {
+            formMessage.style.color = '#38a169'; // Success color
+            formMessage.innerText = 'Message Sent! We will get back to you soon.';
+            contactForm.reset();
+        }, 1500);
     });
-});
 
-// Define AOS animations
-document.head.insertAdjacentHTML('beforeend', `
-    <style>
-        [data-aos] {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        [data-aos].aos-animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-`);
+    // 10. Footer Current Year
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+});
