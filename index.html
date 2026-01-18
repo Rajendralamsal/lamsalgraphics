@@ -1,502 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="p:domain_verify" content="c1711681027656240e531fc1054ca4bd"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lamsal Graphics | Creative Design Studio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajendra Lamsal – Graphic Designer Portfolio</title>
+  <meta name="description" content="Portfolio and services of Rajendra Lamsal, professional graphic designer from Tilottama, Rupandehi. Order custom designs directly via WhatsApp." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #fef6e4; /* cream background */
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover {
+      color: #0077ff;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation */
+    nav {
+      background: #fff9e6;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background-color 0.3s ease;
+    }
+    nav.scrolled {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    nav .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav ul li a {
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #0077ff;
+      transition: width 0.3s ease;
+    }
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 100px 20px 50px;
+      max-width: 720px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 0.3em;
+      color: #111;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: #555;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header .whatsapp-btn {
+      margin-top: 30px;
+      background: #25d366;
+      color: white;
+      padding: 16px 38px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.4);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    header .whatsapp-btn:hover {
+      background: #1ebe57;
+      transform: scale(1.05);
+    }
+
+    /* Sections common */
+    section {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 0.8em;
+      border-left: 6px solid #0077ff;
+      padding-left: 12px;
+      color: #111;
+      user-select: none;
+    }
+
+    /* About Section */
+    #about {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      background: #fff9e6;
+      padding: 40px 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    #about img {
+      max-width: 280px;
+      border-radius: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease;
+    }
+    #about img:hover {
+      transform: scale(1.08);
+    }
+    #about div {
+      flex: 1 1 320px;
+    }
+    #about p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.5;
+      margin-top: 12px;
+      user-select: text;
+    }
+
+    /* Services */
+    #services ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 26px;
+      padding: 0;
+    }
+    #services li {
+      background: #fff;
+      padding: 28px 22px;
+      border-radius: 14px;
+      font-weight: 600;
+      color: #222;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+      cursor: default;
+      user-select: none;
+    }
+    #services li:hover {
+      box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+      transform: translateY(-6px);
+      background: #e8f0fe;
+    }
+
+    /* Portfolio */
+    #portfolio .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    #portfolio .gallery figure {
+      margin: 0;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: #fff;
+    }
+    #portfolio .gallery figure:hover {
+      transform: scale(1.06);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.15);
+    }
+    #portfolio figcaption {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Contact */
+    #contact p {
+      max-width: 540px;
+      color: #444;
+      margin-bottom: 20px;
+      user-select: text;
+    }
+    #contact a.whatsapp-link {
+      display: inline-block;
+      background: #25d366;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 7px 14px rgba(37, 211, 102, 0.45);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      user-select: none;
+    }
+    #contact a.whatsapp-link:hover {
+      background: #1ebe57;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: #fff9e6;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 24px 10px;
+      margin-top: auto;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      #about div {
+        flex: unset;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="preloader">
-        <div class="logo-container">
-            <svg class="logo" width="100" height="100" viewBox="0 0 100 100">
-                <polygon class="logo-shape" points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="var(--accent-color)" stroke-width="2"></polygon>
-                <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
-            </svg>
-            <p class="loading-text">Loading Assets...</p>
-        </div>
-    </div>
 
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+<nav>
+  <div class="container" role="navigation" aria-label="Primary Navigation">
+    <a href="#header" style="font-weight:700; font-size:1.3rem; color:#0077ff;">Rajendra Lamsal</a>
+    <ul>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <header>
-        <div class="logo">
-            <svg width="50" height="50" viewBox="0 0 100 100">
-                <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="var(--accent-color)" stroke-width="2"></polygon>
-                <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
-            </svg>
-            <span class="logo-text">Lamsal Graphics</span>
-        </div>
-        <nav class="desktop-nav">
-            <ul>
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link cta-nav-link">Contact <i class="fas fa-arrow-right"></i></a></li>
-            </ul>
-        </nav>
-        <div class="menu-toggle">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </header>
+<header id="header" role="banner">
+  <h1>Rajendra Lamsal</h1>
+  <p>Professional Graphic Designer — Creative, Reliable & Detail-Oriented</p>
+  <button
+    class="whatsapp-btn"
+    aria-label="Chat with Rajendra on WhatsApp"
+    onclick="window.open('https://wa.me/9779867584455', '_blank')"
+  >Order Now via WhatsApp</button>
+</header>
 
-    <div class="mobile-menu">
-        <ul>
-            <li><a href="#home" class="mobile-link">Home</a></li>
-            <li><a href="#services" class="mobile-link">Services</a></li>
-            <li><a href="#work" class="mobile-link">Work</a></li>
-            <li><a href="#about" class="mobile-link">About</a></li>
-            <li><a href="#contact" class="mobile-link">Contact</a></li>
-        </ul>
-    </div>
+<section id="about" aria-labelledby="about-title">
+  <h2 id="about-title">About Rajendra Lamsal</h2>
+  <img src="my photo.png" alt="Photo of Rajendra Lamsal" />
+  <div>
+    <p>
+      Hello! I'm Rajendra Lamsal, a passionate graphic designer based in Tilottama, Rupandehi.  
+      I specialize in crafting custom designs tailored to your unique needs, including business cards, invitations, certificates, banners, social media posts, and much more.  
+      My goal is to deliver high-quality, creative, and timely solutions that bring your ideas to life.  
+      Let's work together to make your vision stand out!
+    </p>
+  </div>
+</section>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="reveal-text" data-aos="fade-up" data-aos-delay="200">Creative Design <span>Solutions</span> <span class="dot">.</span></h1>
-                <p class="reveal-text" data-aos="fade-up" data-aos-delay="400">We transform ideas into visual masterpieces. Let's create something unforgettable.</p>
-                <div class="cta-container" data-aos="fade-up" data-aos-delay="600">
-                    <a href="#work" class="cta-button primary-btn">View Our Work</a>
-                    <a href="#contact" class="cta-button outline-btn">Start a Project</a>
-                </div>
-            </div>
-            <div class="hero-graphics">
-                <div class="shape shape-1" data-aos="zoom-in" data-aos-delay="800"></div>
-                <div class="shape shape-2" data-aos="zoom-in" data-aos-delay="1000"></div>
-                <div class="shape shape-3" data-aos="zoom-in" data-aos-delay="1200"></div>
-            </div>
-        </section>
+<section id="services" aria-labelledby="services-title">
+  <h2 id="services-title">Services</h2>
+  <ul>
+    <li>Business Card Design & Print</li>
+    <li>Invitation Card Design & Print</li>
+    <li>Certificate Design & Print</li>
+    <li>Flex Banner Design & Print</li>
+    <li>Social Media Post Design</li>
+    <li>Stamp Design & Print</li>
+    <li>Cup Design & Print</li>
+    <li>Cushion Design & Print</li>
+    <li>T-shirt Design & Print</li>
+    <li>Wedding Card Design & Print</li>
+    <li>All types of Photo Design & Print (Condolence, Birthday, Baby Shower, etc.)</li>
+  </ul>
+</section>
 
-        <section id="services" class="services">
-            <div class="section-header" data-aos="fade-up">
-                <span class="subtitle">What We Offer</span>
-                <h2>Comprehensive Design Solutions</h2>
-                <p>From print materials to digital presence, we cover all your creative needs with precision and flair.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>Flex banner Design & Print</h3>
-                    <p>Custom-sized flex banner designs tailored to your needs, ensuring your message stands out and captivates your audience.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
-                    <h3>Social Media Post Design</h3>
-                    <p>Eye-catching social media posts designed to boost engagement and promote your brand effectively across all platforms.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon"><i class="fas fa-id-card"></i></div>
-                    <h3>Visiting Card Design</h3>
-                    <p>Custom visiting cards that reflect your brand identity and leave a lasting, professional impression on your clients.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon"><i class="fas fa-camera"></i></div>
-                    <h3>Photography & Framing</h3>
-                    <p>Professional photography, expert photo editing, and high-quality framing/lamination to preserve and showcase memories beautifully.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>Menu & Letterhead Design</h3>
-                    <p>Elegant hotel menus and custom letterheads that maintain a professional, cohesive look for all your correspondence and offerings.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon"><i class="fas fa-gift"></i></div>
-                    <h3>Personalized Prints (Cup, Cushion, T-Shirt)</h3>
-                    <p>Unique custom designs and prints for mugs, cushions, and t-shirts, perfect for personalized gifts or promotional items.</p>
-                    <a href="#contact" class="order-button">Inquire Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
+<section id="portfolio" aria-labelledby="portfolio-title">
+  <h2 id="portfolio-title">Portfolio</h2>
+  <div class="gallery" role="list">
+    <figure role="listitem" tabindex="0">
+      <img src="https://via.placeholder.com/400x300?text=Business+Card" alt="Business Card Design" />
+      <figcaption>Business Card Design</figcaption>
+    </figure>
+    <figure role="listitem" tabindex="0">
+      <img src="https://via.placeholder.com/400x300?text=Invitation+Card" alt="Invitation Card Design" />
+      <figcaption>Invitation Card Design</figcaption>
+    </figure>
+    <figure role="listitem" tabindex="0">
+      <img src="https://via.placeholder.com/400x300?text=Certificate" alt="Certificate Design" />
+      <figcaption>Certificate Design</figcaption>
+    </figure>
+    <figure role="listitem" tabindex="0">
+      <img src="https://via.placeholder.com/400x300?text=Flex+Banner" alt="Flex Banner Design" />
+      <figcaption>Flex Banner Design</figcaption>
+    </figure>
+    <figure role="listitem" tabindex="0">
+      <img src="https://via.placeholder.com/400x300?text=Social+Media+Post" alt="Social Media Post Design" />
+      <figcaption>Social Media Post Design</figcaption>
+    </figure>
+  </div>
+</section>
 
-        ---
+<section id="contact" aria-labelledby="contact-title">
+  <h2 id="contact-title">Contact & Order</h2>
+  <p>To place an order or ask questions, please message me directly on WhatsApp.</p>
+  <a
+    href="https://wa.me/9779867584455"
+    class="whatsapp-link"
+    target="_blank"
+    rel="noopener"
+    aria-label="Send WhatsApp message to Rajendra Lamsal"
+  >Chat & Order via WhatsApp</a>
+</section>
 
-        <section id="work" class="work">
-            <div class="section-header" data-aos="fade-up">
-                <span class="subtitle">Our Portfolio</span>
-                <h2>Featured Projects</h2>
-                <p>A handpicked selection of our most impactful creative work.</p>
-            </div>
-            <div class="work-filter" data-aos="fade-up" data-aos-delay="100">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="web">Web & Digital</button>
-                <button class="filter-btn" data-filter="print">Print & Packaging</button>
-                <button class="filter-btn" data-filter="photo">Photography</button>
-            </div>
-            <div class="work-grid">
-                <div class="work-item branding" data-aos="zoom-in">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?branding,logo" alt="Branding Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Elegant Brand Identity</h3>
-                                <p>Branding, Logo Design</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-item web" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?ui,website" alt="Web Design Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Modern E-commerce Site</h3>
-                                <p>Web Design, UI/UX</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-item print" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?print,menu" alt="Print Design Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Premium Hotel Menu</h3>
-                                <p>Print, Layout Design</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-item photo" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?portrait,studio" alt="Motion Graphics Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Product Studio Shoot</h3>
-                                <p>Photography, Editing</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-item branding" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?minimalist,logo" alt="Logo Design Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Minimalist Logo Collection</h3>
-                                <p>Branding, Identity</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-item web" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="work-image">
-                        <img src="https://source.unsplash.com/random/600x400/?mobile,app" alt="App Design Project">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <h3>Intuitive Mobile App UX</h3>
-                                <p>UI/UX, Mobile Design</p>
-                                <a href="#" class="work-link">View Details <i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="view-more-container" data-aos="fade-up" data-aos-delay="600">
-                <a href="#" class="view-more-btn primary-btn outline-btn">Explore Full Portfolio <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
+<footer>
+  <p>© 2026 Rajendra Lamsal | Tilottama, Rupandehi | <a href="https://rajendra444.com.np" target="_blank" rel="noopener">rajendra444.com.np</a></p>
+</footer>
 
-        ---
+<script>
+  // Animate sections on scroll using IntersectionObserver
+  const sections = document.querySelectorAll('section, header');
+  const navLinks = document.querySelectorAll('nav ul li a');
 
-        <section id="about" class="about">
-            <div class="about-content">
-                <div class="about-image" data-aos="fade-right">
-                    <img src="https://source.unsplash.com/random/800x1000/?creative,design-desk" alt="Lamsal Graphics Team">
-                    <div class="about-shape"></div>
-                </div>
-                <div class="about-text" data-aos="fade-left">
-                    <div class="section-header left-align">
-                        <span class="subtitle">Our Journey</span>
-                        <h2>The Lamsal Graphics Story</h2>
-                        <p>Where passion meets precision to deliver impactful designs.</p>
-                    </div>
-                    <p class="about-description">Lamsal Graphics is a premier design studio, **founded in 2022**, dedicated to creating exceptional visual experiences. Our core philosophy blends **artistic vision** with **strategic marketing** to ensure every design not only looks stunning but also drives real-world results for your business.</p>
-                    <p class="about-description">We pride ourselves on our collaborative approach, treating every client as a partner. We believe the power of design is to transform brands, create meaningful connections, and tell compelling stories.</p>
-                    <div class="stats-container">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="150">0</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="45">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-label">Years of Operation</span>
-                        </div>
-                        </div>
-                </div>
-            </div>
-        </section>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Highlight nav link
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
 
-        ---
+  sections.forEach(section => observer.observe(section));
 
-        <section class="team">
-            <div class="section-header" data-aos="fade-up">
-                <span class="subtitle">The Core</span>
-                <h2>Meet Our Creative Team</h2>
-                <p>The dedicated minds and hands that bring your visions to life.</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member" data-aos="fade-up">
-                    <div class="member-image">
-                        <img src="https://source.unsplash.com/random/400x400/?portrait,man,business" alt="Rajendra Lamsal">
-                        <div class="member-social">
-                            <a href="https://wa.me/+977-9867584455" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://www.facebook.com/Rajendra Lamsal" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="mailto:lamsayush1@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <h3>Rajendra Lamsal</h3>
-                    <p>Founder & Creative Director</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                    <div class="member-image">
-                        <img src="https://source.unsplash.com/random/400x400/?portrait,man,developer" alt="Narayan Bogati">
-                        <div class="member-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
-                    <h3>Narayan Bogati</h3>
-                    <p>Web & Digital Developer</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                    <div class="member-image">
-                        <img src="https://source.unsplash.com/random/400x400/?portrait,man,designer" alt="Amrit Lamsal">
-                        <div class="member-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
-                    <h3>Amrit Lamsal</h3>
-                    <p>Junior Graphics Designer</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
-                    <div class="member-image">
-                        <img src="https://source.unsplash.com/random/400x400/?portrait,woman,designer" alt="Maya Gurung">
-                        <div class="member-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
-                    <h3>Maya Gurung</h3>
-                    <p>UI/UX Designer</p>
-                </div>
-            </div>
-        </section>
+  // Change nav background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if(window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
 
-        ---
+  // Keyboard accessibility: focus on portfolio figures with keyboard
+  const figures = document.querySelectorAll('#portfolio figure');
+  figures.forEach(figure => {
+    figure.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        figure.querySelector('img').classList.toggle('zoomed');
+      }
+    });
+  });
+</script>
 
-        <section class="testimonials">
-            <div class="section-header" data-aos="fade-up">
-                <span class="subtitle">Trust & Quality</span>
-                <h2>Words From Our Clients</h2>
-                <p>Don't just take our word for it—see what our partners have to say.</p>
-            </div>
-            <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-track">
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <p>"Lamsal Graphics transformed our brand identity with their exceptional design work. Their attention to detail and creative approach exceeded our expectations."</p>
-                            <div class="testimonial-author">
-                                <img src="https://source.unsplash.com/random/100x100/?portrait,man,ceo" alt="Sanjay Patel">
-                                <div class="author-info">
-                                    <h4>Sanjay Patel</h4>
-                                    <p>CEO, TechNova</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <p>"Working with Lamsal Graphics was a game-changer. Their designs are stunning, and the quality of their print services is unmatched in the region."</p>
-                            <div class="testimonial-author">
-                                <img src="https://source.unsplash.com/random/100x100/?portrait,woman,director" alt="Leela Shrestha">
-                                <div class="author-info">
-                                    <h4>Leela Shrestha</h4>
-                                    <p>Marketing Director, EcoStyle</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <p>"The team is incredibly talented and professional. They took our vague ideas and turned them into a cohesive brand identity that perfectly represents our values."</p>
-                            <div class="testimonial-author">
-                                <img src="https://source.unsplash.com/random/100x100/?portrait,man,founder" alt="Rohan Karki">
-                                <div class="author-info">
-                                    <h4>Rohan Karki</h4>
-                                    <p>Founder, Himalayan Crafts</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-controls">
-                    <button class="testimonial-prev" aria-label="Previous Testimonial"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <button class="testimonial-next" aria-label="Next Testimonial"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
-
-        ---
-
-        <section id="contact" class="contact">
-            <div class="contact-container">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="section-header left-align">
-                        <span class="subtitle">Ready to Elevate?</span>
-                        <h2>Get In Touch</h2>
-                        <p>Let's discuss your next project. We're here to turn your creative brief into reality.</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Tilottma-3 Magarghat, Rupandehi, Nepal</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:lamsayush1@gmail.com">lamsayush1@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p><a href="tel:+9779867584455">+977 9867584455</a></p>
-                            <p><a href="tel:+9779814483244">+977 9814483244</a></p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form" data-aos="fade-left">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder=" ">
-                            <label for="name">Your Name *</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder=" ">
-                            <label for="email">Your Email *</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" required placeholder=" ">
-                            <label for="subject">Subject *</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" required placeholder=" "></textarea>
-                            <label for="message">Your Message *</label>
-                        </div>
-                        <button type="submit" class="submit-btn primary-btn">Send Message <i class="fas fa-paper-plane"></i></button>
-                        <p id="form-message" style="margin-top: 15px; color: var(--accent-color);"></p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <svg width="60" height="60" viewBox="0 0 100 100">
-                    <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="var(--accent-color)" stroke-width="2"></polygon>
-                    <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16">LG</text>
-                </svg>
-                <h3>Lamsal Graphics</h3>
-                <p>Transforming ideas into visual masterpieces</p>
-                <div class="footer-social-inline">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#work">Work</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Key Services</h4>
-                    <ul>
-                        <li><a href="#">Print & Branding</a></li>
-                        <li><a href="#">Social Media Design</a></li>
-                        <li><a href="#">Photography & Edit</a></li>
-                        <li><a href="#">Business Cards</a></li>
-                        <li><a href="#">Personalized Prints</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Office</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Tilottma-3, Rupandehi, Nepal</li>
-                        <li><i class="fas fa-envelope"></i> lamsayush1@gmail.com</li>
-                        <li><i class="fas fa-phone-alt"></i> +977 9867584455</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year">2025</span> Lamsal Graphics. All rights reserved.</p>
-            <div class="legal-links">
-                <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
-
