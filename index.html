@@ -241,6 +241,22 @@
       text-align: center;
       user-select: none;
     }
+    #services li a {
+  color: inherit;
+}
+
+#services li a::after {
+  content: " → View Work";
+  font-size: 0.85rem;
+  color: #0077ff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#services li:hover a::after {
+  opacity: 1;
+}
+
 
     /* Contact */
     #contact p {
@@ -330,7 +346,12 @@
 <section id="services" aria-labelledby="services-title">
   <h2 id="services-title">Services</h2>
   <ul>
-    <li>Business Card Design & Print</li>
+    <li>
+  <a href="business card.html" style="display:block;">
+    Business Card Design & Print
+  </a>
+</li>
+
     <li>Invitation Card Design & Print</li>
     <li>Certificate Design & Print</li>
     <li>Flex Banner Design & Print</li>
@@ -425,4 +446,5 @@
 
 </body>
 </html>
+
 
