@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Business Card Designs | Rajendra Lamsal</title>
-<meta name="description" content="Professional business card design showcase by Rajendra Lamsal. Clean, modern & custom business card designs. Order via WhatsApp.">
+<meta name="description" content="Professional business card design showcase by Rajendra Lamsal. Clean, modern & custom business card designs. Order via WhatsApp." />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
 <style>
 :root{
   --primary:#2563eb;
   --accent:#22c55e;
-  --bg:#fef6e4;
+  --bg:#f4f7fb;   /* Updated to match main site background */
   --card:#ffffff;
   --text:#1f2937;
   --muted:#6b7280;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+
+/* REMOVE UNDERLINE FROM ALL LINKS */
+a,
+a:hover,
+a:focus,
+a:active{
+  text-decoration:none;
+}
 
 body{
   font-family:'Inter',sans-serif;
@@ -53,11 +61,31 @@ body{
   color:var(--muted);
   font-size:1.15rem;
 }
+
+/* BACK LINK WITH ARROW ANIMATION */
 .hero a{
   display:inline-block;
   margin-top:30px;
   font-weight:600;
   color:var(--primary);
+  position:relative;
+  padding-right:26px;
+  transition:color .3s ease;
+}
+.hero a::after{
+  content:"→";
+  position:absolute;
+  right:0;
+  opacity:0;
+  transform:translateX(-8px);
+  transition:.35s ease;
+}
+.hero a:hover{
+  color:#1d4ed8;
+}
+.hero a:hover::after{
+  opacity:1;
+  transform:translateX(6px);
 }
 
 /* GALLERY */
@@ -127,11 +155,12 @@ body{
   font-size:1.15rem;
   display:inline-block;
   box-shadow:0 10px 20px rgba(37,211,102,.45);
-  transition:.3s;
+  transition:.3s ease;
 }
 .cta a:hover{
   background:#1ebe57;
-  transform:scale(1.05);
+  transform:scale(1.06);
+  box-shadow:0 16px 40px rgba(37,211,102,.55);
 }
 
 /* FOOTER */
@@ -167,37 +196,37 @@ footer{
   <span>Design Showcase</span>
   <h1>Business Card Designs</h1>
   <p>Minimal, modern & professional business card designs crafted to build trust and strong brand identity.</p>
-  <a href="index.html">← Back to Portfolio</a>
+  <a href="index.html">Back to Portfolio</a>
 </header>
 
 <section class="gallery reveal">
   <div class="card">
-    <img src="aaa.jpg" alt="Modern Clean Business Card">
+    <img src="aaa.jpg" alt="Modern Clean Business Card" />
     <div class="caption">Modern Clean Design</div>
   </div>
 
   <div class="card">
-    <img src="bbb.jpg" alt="Minimal Typography Business Card">
+    <img src="bbb.jpg" alt="Minimal Typography Business Card" />
     <div class="caption">Minimal Typography Style</div>
   </div>
 
   <div class="card">
-    <img src="ccc.jpg" alt="Creative Brand Business Card">
+    <img src="ccc.jpg" alt="Creative Brand Business Card" />
     <div class="caption">Creative Brand Card</div>
   </div>
 
   <div class="card">
-    <img src="ddd.jpg" alt="Luxury Business Card">
+    <img src="ddd.jpg" alt="Luxury Business Card" />
     <div class="caption">Luxury Premium Card</div>
   </div>
 
   <div class="card">
-    <img src="eee.jpg" alt="Corporate Business Card">
+    <img src="eee.jpg" alt="Corporate Business Card" />
     <div class="caption">Corporate Identity Card</div>
   </div>
 
   <div class="card">
-    <img src="fff.jpg" alt="Elegant Business Card">
+    <img src="fff.jpg" alt="Elegant Business Card" />
     <div class="caption">Simple & Elegant Design</div>
   </div>
 </section>
@@ -212,13 +241,17 @@ footer{
 </footer>
 
 <script>
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('show')}
-  })
-},{threshold:.25})
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: .25
+});
 
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
