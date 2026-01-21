@@ -1,218 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Business Card Design Showcase – Rajendra Lamsal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Professional business card design showcase by Rajendra Lamsal. Clean, modern, and custom business card designs. Order directly via WhatsApp." />
+<title>Business Card Designs | Rajendra Lamsal</title>
+<meta name="description" content="Professional business card design showcase by Rajendra Lamsal. Clean, modern & custom business card designs. Order via WhatsApp.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+:root{
+  --primary:#2563eb;
+  --accent:#22c55e;
+  --bg:#fef6e4;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #fef6e4;
-      color: #222;
-      line-height: 1.6;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 80px 20px 50px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 1s ease;
-    }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:90px 20px 60px;
+}
+.hero span{
+  display:inline-block;
+  background:#e0ecff;
+  color:var(--primary);
+  padding:6px 16px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.9rem;
+  margin-bottom:16px;
+}
+.hero h1{
+  font-size:3rem;
+  margin-bottom:14px;
+}
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  font-size:1.15rem;
+}
+.hero a{
+  display:inline-block;
+  margin-top:30px;
+  font-weight:600;
+  color:var(--primary);
+}
 
-    header.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* GALLERY */
+.gallery{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
+.card{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  background:var(--card);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
 
-    header p {
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 600px;
-      margin: auto;
-    }
+.card img{
+  width:100%;
+  display:block;
+  transition:.4s;
+}
+.card:hover img{
+  transform:scale(1.08);
+}
 
-    .back-btn {
-      display: inline-block;
-      margin-top: 30px;
-      font-weight: 600;
-      color: #0077ff;
-    }
+/* Overlay caption */
+.card .caption{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.75),transparent 60%);
+  display:flex;
+  align-items:flex-end;
+  padding:18px;
+  color:#fff;
+  font-weight:600;
+  opacity:0;
+  transition:.4s;
+}
+.card:hover .caption{
+  opacity:1;
+}
 
-    /* Gallery */
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 1s ease;
-    }
+/* CTA */
+.cta{
+  text-align:center;
+  margin:90px 20px;
+}
+.cta h2{
+  font-size:2.2rem;
+  margin-bottom:24px;
+}
+.cta a{
+  background:#25d366;
+  color:#fff;
+  padding:16px 46px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:1.15rem;
+  display:inline-block;
+  box-shadow:0 10px 20px rgba(37,211,102,.45);
+  transition:.3s;
+}
+.cta a:hover{
+  background:#1ebe57;
+  transform:scale(1.05);
+}
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* FOOTER */
+footer{
+  background:#fff9e6;
+  text-align:center;
+  padding:28px;
+  color:#6b7280;
+  font-size:.9rem;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      width: 100%;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.08);
-    }
-
-    .card div {
-      padding: 18px;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      margin: 70px 20px;
-    }
-
-    .cta h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .whatsapp-btn {
-      background: #25d366;
-      color: #fff;
-      padding: 16px 42px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      box-shadow: 0 8px 16px rgba(37,211,102,0.4);
-      transition: 0.3s ease;
-      display: inline-block;
-    }
-
-    .whatsapp-btn:hover {
-      background: #1ebe57;
-      transform: scale(1.06);
-    }
-
-    /* Footer */
-    footer {
-      background: #fff9e6;
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-  </style>
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:2.3rem}
+}
+</style>
 </head>
+
 <body>
 
-<header id="top">
-  <h1>Business Card Design</h1>
-  <p>Minimal, modern & professional business card designs crafted to build trust and brand identity.</p>
-  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+<header class="hero reveal">
+  <span>Design Showcase</span>
+  <h1>Business Card Designs</h1>
+  <p>Minimal, modern & professional business card designs crafted to build trust and strong brand identity.</p>
+  <a href="index.html">← Back to Portfolio</a>
 </header>
 
-<section>
-  <div class="grid">
-    <div class="card">
-      <img src="aaa.jpg" alt="Business Card Design Sample">
-      <div>Modern Clean Design</div>
-    </div>
+<section class="gallery reveal">
+  <div class="card">
+    <img src="aaa.jpg" alt="Modern Clean Business Card">
+    <div class="caption">Modern Clean Design</div>
+  </div>
 
-    <div class="card">
-      <img src="bbb.jpg" alt="Business Card Design Sample">
-      <div>Minimal Typography Style</div>
-    </div>
+  <div class="card">
+    <img src="bbb.jpg" alt="Minimal Typography Business Card">
+    <div class="caption">Minimal Typography Style</div>
+  </div>
 
-    <div class="card">
-      <img src="ccc.jpg" alt="Business Card Design Sample">
-      <div>Creative Brand Card</div>
-    </div>
+  <div class="card">
+    <img src="ccc.jpg" alt="Creative Brand Business Card">
+    <div class="caption">Creative Brand Card</div>
+  </div>
 
-    <div class="card">
-      <img src="ddd.jpg" alt="Business Card Design Sample">
-      <div>Luxury Premium Card</div>
-    </div>
+  <div class="card">
+    <img src="ddd.jpg" alt="Luxury Business Card">
+    <div class="caption">Luxury Premium Card</div>
+  </div>
 
-    <div class="card">
-      <img src="eee.jpg" alt="Business Card Design Sample">
-      <div>Corporate Identity Card</div>
-    </div>
+  <div class="card">
+    <img src="eee.jpg" alt="Corporate Business Card">
+    <div class="caption">Corporate Identity Card</div>
+  </div>
 
-    <div class="card">
-      <img src="fff.jpg" alt="Business Card Design Sample">
-      <div>Simple & Elegant Design</div>
-    </div>
+  <div class="card">
+    <img src="fff.jpg" alt="Elegant Business Card">
+    <div class="caption">Simple & Elegant Design</div>
   </div>
 </section>
 
-<div class="cta">
-  <h2>Want a Professional Business Card?</h2>
-  <a class="whatsapp-btn" href="https://wa.me/9779867584455" target="_blank">
-    Order via WhatsApp
-  </a>
-</div>
+<section class="cta reveal">
+  <h2>Need a Professional Business Card?</h2>
+  <a href="https://wa.me/9779867584455" target="_blank">Order via WhatsApp</a>
+</section>
 
 <footer>
-  © 2026 Rajendra Lamsal | Tilottama, Rupandehi  
+  © 2026 Rajendra Lamsal | Tilottama, Rupandehi
 </footer>
 
 <script>
-  const elements = document.querySelectorAll('header, section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('show')}
+  })
+},{threshold:.25})
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  elements.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
 </script>
 
 </body>
 </html>
-
