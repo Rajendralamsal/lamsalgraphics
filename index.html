@@ -1,543 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rajendra Lamsal – Graphic Designer Portfolio</title>
-  <meta name="description" content="Portfolio and services of Rajendra Lamsal, professional graphic designer from Tilottama, Rupandehi. Order custom designs directly via WhatsApp." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset & base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #fef6e4; /* cream background */
-      color: #222;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    a:hover {
-      color: #0077ff;
-    }
-    img {
-      max-width: 50%;
-      display: block;
-      border-radius: 50px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    img:hover {
-      transform: scale(1.05);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajendra Lamsal | Graphic Designer</title>
 
-    /* Navigation */
-    nav {
-      background: #fff9e6;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background-color 0.3s ease;
-    }
-    nav.scrolled {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    }
-    nav .container {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 20px;
-      align-items: center;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav ul li a {
-      padding: 6px 0;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease;
-      position: relative;
-    }
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #0077ff;
-      transition: width 0.3s ease;
-    }
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      width: 100%;
-    }
+<meta name="description" content="Rajendra Lamsal – Professional Graphic Designer from Tilottama, Rupandehi. Order creative design services via WhatsApp.">
 
-    /* Header Section */
-    header {
-      text-align: center;
-      padding: 100px 20px 50px;
-      max-width: 720px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    header.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    header h1 {
-      font-weight: 700;
-      font-size: 3rem;
-      margin-bottom: 0.3em;
-      color: #111;
-    }
-    header p {
-      font-size: 1.25rem;
-      color: #555;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    header .whatsapp-btn {
-      margin-top: 30px;
-      background: #25d366;
-      color: white;
-      padding: 16px 38px;
-      border: none;
-      border-radius: 30px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.4);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    header .whatsapp-btn:hover {
-      background: #1ebe57;
-      transform: scale(1.05);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    /* Sections common */
-    section {
-      max-width: 960px;
-      margin: 60px auto;
-      padding: 0 20px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    section h2 {
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 0.8em;
-      border-left: 6px solid #0077ff;
-      padding-left: 12px;
-      color: #111;
-      user-select: none;
-    }
-
-    /* About Section */
-    #about {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      background: #fff9e6;
-      padding: 40px 20px;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    #about img {
-      max-width: 280px;
-      border-radius: 100%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.5s ease;
-    }
-    #about img:hover {
-      transform: scale(1.08);
-    }
-    #about div {
-      flex: 1 1 320px;
-    }
-    #about p {
-      font-size: 1.1rem;
-      color: #333;
-      line-height: 1.5;
-      margin-top: 12px;
-      user-select: text;
-    }
-
-    /* Services */
-    #services ul {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 26px;
-      padding: 0;
-    }
-    #services li {
-      background: #fff;
-      padding: 28px 22px;
-      border-radius: 14px;
-      font-weight: 600;
-      color: #222;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
-      transition: box-shadow 0.35s ease, transform 0.35s ease;
-      cursor: default;
-      user-select: none;
-    }
-    #services li:hover {
-      box-shadow: 0 14px 36px rgba(0,0,0,0.12);
-      transform: translateY(-6px);
-      background: #e8f0fe;
-    }
-
-    /* Portfolio */
-    #portfolio .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-    }
-    #portfolio .gallery figure {
-      margin: 0;
-      cursor: pointer;
-      overflow: hidden;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      background: #fff;
-    }
-    #portfolio .gallery figure:hover {
-      transform: scale(1.06);
-      box-shadow: 0 18px 48px rgba(0,0,0,0.15);
-    }
-    #portfolio figcaption {
-      padding: 14px 18px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #111;
-      text-align: center;
-      user-select: none;
-    }
-    #services li a {
-  color: inherit;
+<style>
+:root{
+  --primary:#2563eb;
+  --accent:#22c55e;
+  --bg:#f8fafc;
+  --dark:#0f172a;
+  --muted:#64748b;
 }
 
-#services li a::after {
-  content: " → View Work";
-  font-size: 0.85rem;
-  color: #0077ff;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.6;
 }
 
-#services li:hover a::after {
-  opacity: 1;
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#ffffff;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+.nav-container{
+  max-width:1100px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+nav a{
+  font-weight:600;
+  color:var(--dark);
+}
+nav a:hover{color:var(--primary);}
+
+/* HERO */
+.hero{
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.hero h1{
+  font-size:3rem;
+}
+.hero p{
+  margin:15px 0 30px;
+  color:var(--muted);
+  font-size:1.1rem;
+}
+.hero img{
+  width:100%;
+  max-width:350px;
+  border-radius:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+.btn{
+  background:var(--accent);
+  color:#fff;
+  padding:15px 36px;
+  border-radius:999px;
+  font-weight:700;
+  display:inline-block;
+}
+.btn:hover{opacity:.9}
+
+/* SECTIONS */
+section{
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 20px;
+}
+section h2{
+  font-size:2.2rem;
+  margin-bottom:30px;
+  position:relative;
+}
+section h2::after{
+  content:"";
+  width:60px;
+  height:4px;
+  background:var(--primary);
+  position:absolute;
+  left:0;
+  bottom:-10px;
+  border-radius:10px;
 }
 
-
-    /* Contact */
-    #contact p {
-      max-width: 540px;
-      color: #444;
-      margin-bottom: 20px;
-      user-select: text;
-    }
-    #contact a.whatsapp-link {
-      display: inline-block;
-      background: #25d366;
-      color: white;
-      padding: 16px 40px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      box-shadow: 0 7px 14px rgba(37, 211, 102, 0.45);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      user-select: none;
-    }
-    #contact a.whatsapp-link:hover {
-      background: #1ebe57;
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      background: #fff9e6;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-      padding: 24px 10px;
-      margin-top: auto;
-      user-select: none;
-      letter-spacing: 0.03em;
-    }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      #about {
-        flex-direction: column;
-        text-align: center;
-      }
-      #about div {
-        flex: unset;
-      }
-    }
-    #services ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 26px;
-  padding: 0;
-  margin: 0;
+/* ABOUT */
+.about-box{
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-#services li {
-  background: #fff;
-  padding: 28px 22px;
-  border-radius: 14px;
-  font-weight: 600;
-  color: #222;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.07);
-  transition: box-shadow 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  overflow: hidden;
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.service-card{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.3s;
+}
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+.service-card a{
+  font-weight:600;
+  display:block;
+  margin-top:10px;
+  color:var(--primary);
 }
 
-#services li a {
-  color: inherit;
-  display: block;
-  text-decoration: none;
-  position: relative;
-  padding-right: 25px;
+/* PORTFOLIO */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
-#services li a {
-  color: inherit;
-  display: inline-block;
-  position: relative;
-  padding-right: 0;
+.portfolio figure{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
-
-#services li a::after {
-  content: "→ View Work";
-  font-size: 0.85rem;
-  color: #0077ff;
-  opacity: 0;
-  display: block;
-  margin-top: 6px;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  text-align: left;
+.portfolio img{
+  width:100%;
+  display:block;
+}
+.portfolio figcaption{
+  padding:15px;
+  font-weight:600;
+  text-align:center;
 }
 
-#services li:hover a::after {
-  opacity: 1;
+/* CONTACT */
+.contact{
+  background:#fff;
+  padding:50px;
+  border-radius:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  text-align:center;
 }
 
-#services li a::after {
-  content: " → View Work";
-  font-size: 0.85rem;
-  color: #0077ff;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.3s ease, right 0.3s ease;
-  pointer-events: none;
+/* FOOTER */
+footer{
+  background:#fff;
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+  margin-top:80px;
 }
 
-#services li:hover {
-  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
-  transform: translateY(-6px);
-  background: #e8f0fe;
+/* ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
 }
 
-#services li:hover a::after {
-  opacity: 1;
-  right: 5px;
+/* MOBILE */
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  nav ul{
+    gap:15px;
+  }
 }
-
-/* Highlight clicked item */
-#services li.active {
-  background: #d0e6ff;
-  box-shadow: 0 18px 48px rgba(0,0,0,0.15);
-  transform: translateY(-8px);
-}
-
-  </style>
+</style>
 </head>
+
 <body>
 
 <nav>
-  <div class="container" role="navigation" aria-label="Primary Navigation">
-    <a href="#header" style="font-weight:700; font-size:1.3rem; color:#0077ff;">Rajendra Lamsal</a>
+  <div class="nav-container">
+    <strong style="color:#2563eb;">Rajendra Lamsal</strong>
     <ul>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<header id="header" role="banner">
-  <h1>Rajendra Lamsal</h1>
-  <p>Professional Graphic Designer — Creative, Reliable & Detail-Oriented</p>
-  <button
-    class="whatsapp-btn"
-    aria-label="Chat with Rajendra on WhatsApp"
-    onclick="window.open('https://wa.me/9779867584455', '_blank')"
-  >Order Now via WhatsApp</button>
-</header>
-
-<section id="about" aria-labelledby="about-title">
-  <h2 id="about-title">About Rajendra Lamsal</h2>
-  <img src="me .jpg" alt="Photo of Rajendra Lamsal" />
+<section class="hero reveal">
   <div>
+    <h1>Graphic Designer</h1>
+    <p>Creative, reliable & detail-oriented graphic designer from Tilottama, Rupandehi.</p>
+    <a class="btn" href="https://wa.me/9779867584455" target="_blank">Order via WhatsApp</a>
+  </div>
+  <img src="me .jpg" alt="Rajendra Lamsal">
+</section>
+
+<section id="about" class="reveal">
+  <h2>About Me</h2>
+  <div class="about-box">
     <p>
-      Hello! I'm Rajendra Lamsal, a passionate graphic designer based in Tilottama, Rupandehi.  
-      I specialize in crafting custom designs tailored to your unique needs, including business cards, invitations, certificates, banners, social media posts, and much more.  
-      My goal is to deliver high-quality, creative, and timely solutions that bring your ideas to life.  
-      Let's work together to make your vision stand out!
+      I’m Rajendra Lamsal, a professional graphic designer specializing in business cards,
+      invitations, certificates, banners, social media designs, and custom print work.
+      I focus on quality, creativity, and timely delivery.
     </p>
   </div>
 </section>
 
-<section id="services" aria-labelledby="services-title">
-  <h2 id="services-title">Services</h2>
-  <ul>
-    <li><a href="business card.html">Business Card Design & Print</a></li>
-    <li><a href="invitation-card.html">Invitation Card Design & Print</a></li>
-    <li><a href="certificate.html">Certificate Design & Print</a></li>
-    <li><a href="flex-banner.html">Flex Banner Design & Print</a></li>
-    <li><a href="social-media.html">Social Media Post Design</a></li>
-    <li><a href="stamp.html">Stamp Design & Print</a></li>
-    <li><a href="cup.html">Cup Design & Print</a></li>
-    <li><a href="cushion.html">Cushion Design & Print</a></li>
-    <li><a href="tshirt.html">T-shirt Design & Print</a></li>
-    <li><a href="wedding card.html">Wedding Card Design & Print</a></li>
-    <li><a href="photo-design.html">All types of Photo Design & Print (Condolence, Birthday, Baby Shower, etc.)</a></li>
-  </ul>
-</section>
-
-<section id="portfolio" aria-labelledby="portfolio-title">
-  <h2 id="portfolio-title">Portfolio</h2>
-  <div class="gallery" role="list">
-    <figure role="listitem" tabindex="0">
-      <img src="https://via.placeholder.com/400x300?text=Business+Card" alt="Business Card Design" />
-      <figcaption>Business Card Design</figcaption>
-    </figure>
-    <figure role="listitem" tabindex="0">
-      <img src="https://via.placeholder.com/400x300?text=Invitation+Card" alt="Invitation Card Design" />
-      <figcaption>Invitation Card Design</figcaption>
-    </figure>
-    <figure role="listitem" tabindex="0">
-      <img src="https://via.placeholder.com/400x300?text=Certificate" alt="Certificate Design" />
-      <figcaption>Certificate Design</figcaption>
-    </figure>
-    <figure role="listitem" tabindex="0">
-      <img src="https://via.placeholder.com/400x300?text=Flex+Banner" alt="Flex Banner Design" />
-      <figcaption>Flex Banner Design</figcaption>
-    </figure>
-    <figure role="listitem" tabindex="0">
-      <img src="https://via.placeholder.com/400x300?text=Social+Media+Post" alt="Social Media Post Design" />
-      <figcaption>Social Media Post Design</figcaption>
-    </figure>
+<section id="services" class="reveal">
+  <h2>Services</h2>
+  <div class="services">
+    <div class="service-card"><strong>Business Card</strong><a href="business card.html">View Work →</a></div>
+    <div class="service-card"><strong>Invitation Card</strong><a href="invitation-card.html">View Work →</a></div>
+    <div class="service-card"><strong>Certificate</strong><a href="certificate.html">View Work →</a></div>
+    <div class="service-card"><strong>Flex Banner</strong><a href="flex-banner.html">View Work →</a></div>
+    <div class="service-card"><strong>Social Media Post</strong><a href="social-media.html">View Work →</a></div>
+    <div class="service-card"><strong>Custom Print Designs</strong><a href="photo-design.html">View Work →</a></div>
   </div>
 </section>
 
-<section id="contact" aria-labelledby="contact-title">
-  <h2 id="contact-title">Contact & Order</h2>
-  <p>To place an order or ask questions, please message me directly on WhatsApp.</p>
-  <a
-    href="https://wa.me/9779867584455"
-    class="whatsapp-link"
-    target="_blank"
-    rel="noopener"
-    aria-label="Send WhatsApp message to Rajendra Lamsal"
-  >Chat & Order via WhatsApp</a>
+<section id="portfolio" class="reveal">
+  <h2>Portfolio</h2>
+  <div class="portfolio">
+    <figure><img src="https://via.placeholder.com/400x300"><figcaption>Business Card</figcaption></figure>
+    <figure><img src="https://via.placeholder.com/400x300"><figcaption>Invitation Card</figcaption></figure>
+    <figure><img src="https://via.placeholder.com/400x300"><figcaption>Certificate</figcaption></figure>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>Contact</h2>
+  <div class="contact">
+    <p>Place your order directly through WhatsApp.</p><br>
+    <a class="btn" href="https://wa.me/9779867584455" target="_blank">Chat on WhatsApp</a>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Rajendra Lamsal | Tilottama, Rupandehi | <a href="https://rajendra444.com.np" target="_blank" rel="noopener">rajendra444.com.np</a></p>
+  © 2026 Rajendra Lamsal | Tilottama, Rupandehi
 </footer>
 
 <script>
-  // Animate sections on scroll using IntersectionObserver
-  const sections = document.querySelectorAll('section, header');
-  const navLinks = document.querySelectorAll('nav ul li a');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('show')}
+  })
+},{threshold:.2})
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Highlight nav link
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
-        });
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach(section => observer.observe(section));
-
-  // Change nav background on scroll
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if(window.scrollY > 50) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
-
-  // Keyboard accessibility: focus on portfolio figures with keyboard
-  const figures = document.querySelectorAll('#portfolio figure');
-  figures.forEach(figure => {
-    figure.addEventListener('keypress', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        figure.querySelector('img').classList.toggle('zoomed');
-      }
-    });
-  });
-  const serviceItems = document.querySelectorAll('#services li');
-
-serviceItems.forEach(item => {
-  item.addEventListener('click', () => {
-    serviceItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
